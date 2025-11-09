@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<StackPane prefHeight="600" prefWidth="600" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.universidad.estructuras.proyecto_estructuras.RecuperarPasswordController">
+
+   <!-- PANTALLA 1: Solicitar nombre de usuario -->
+   <VBox fx:id="requestPasswordView" alignment="CENTER" spacing="25" style="-fx-background-color: #121212;">
+
+      <padding>
+         <Insets bottom="40" left="40" right="40" top="40" />
+      </padding>
+
+      <!-- Botón de regreso -->
+      <HBox alignment="TOP_LEFT" VBox.vgrow="NEVER">
+         <VBox.margin>
+            <Insets bottom="20" />
+         </VBox.margin>
+         <Button fx:id="backButton" onAction="#handleBack" style="-fx-background-color: transparent;                            -fx-text-fill: white;                            -fx-font-size: 24px;                            -fx-cursor: hand;" text="←">
+            <padding>
+               <Insets bottom="5" left="15" right="15" top="5" />
+            </padding>
+         </Button>
+      </HBox>
+
+      <!-- Logo / Ícono musical -->
+      <StackPane>
+         <VBox.margin>
+            <Insets bottom="10" />
+         </VBox.margin>
+         <Circle radius="40" style="-fx-fill: #1DB954;" />
+         <Label style="-fx-text-fill: #121212; -fx-font-size: 32px; -fx-font-weight: bold;" text="♪♪" />
+      </StackPane>
+
+      <!-- Título -->
+      <Label style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" text="Recuperar contraseña">
+         <VBox.margin>
+            <Insets bottom="5" />
+         </VBox.margin>
+      </Label>
+
+      <!-- Subtítulo -->
+      <Label alignment="CENTER" maxWidth="450" style="-fx-text-fill: #B3B3B3; -fx-font-size: 14px;" text="Ingresa tu nombre de usuario para recuperar tu contraseña" wrapText="true">
+         <VBox.margin>
+            <Insets bottom="20" />
+         </VBox.margin>
+      </Label>
+
+      <!-- Campo de nombre de usuario -->
+      <VBox alignment="CENTER" maxWidth="480" spacing="8">
+         <Label style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;" text="Nombre de usuario" />
+
+         <TextField fx:id="usernameField" prefWidth="480" promptText="Ingresa tu nombre de usuario" style="-fx-background-color: #282828;                               -fx-text-fill: white;                               -fx-prompt-text-fill: #727272;                               -fx-background-radius: 4;                               -fx-border-radius: 4;                               -fx-padding: 14;                               -fx-font-size: 14px;                               -fx-border-color: transparent;" />
+      </VBox>
+
+      <!-- Botón de enviar instrucciones -->
+      <Button fx:id="sendInstructionsButton" maxWidth="480" onAction="#handleSendInstructions" prefHeight="48" prefWidth="480" style="-fx-background-color: #1DB954;                        -fx-text-fill: #121212;                        -fx-font-size: 16px;                        -fx-font-weight: bold;                        -fx-background-radius: 24;                        -fx-cursor: hand;" text="Enviar instrucciones">
+         <VBox.margin>
+            <Insets top="10" />
+         </VBox.margin>
+      </Button>
+
+      <!-- Link para volver a iniciar sesión -->
+      <HBox alignment="CENTER" spacing="5">
+         <VBox.margin>
+            <Insets top="20" />
+         </VBox.margin>
+
+         <Label style="-fx-text-fill: #B3B3B3; -fx-font-size: 14px;" text="¿Recordaste tu contraseña?" />
+
+         <Hyperlink fx:id="loginLink" onAction="#handleBackToLogin" style="-fx-text-fill: #1DB954;                               -fx-font-size: 14px;                               -fx-underline: true;" text="Iniciar sesión" />
+      </HBox>
+
+   </VBox>
+
+   <!-- PANTALLA 2: Confirmación de envío -->
+   <VBox fx:id="confirmationView" alignment="CENTER" spacing="25" style="-fx-background-color: #121212;" visible="false">
+
+      <padding>
+         <Insets bottom="40" left="40" right="40" top="40" />
+      </padding>
+
+      <!-- Logo / Ícono de confirmación (check) -->
+      <StackPane>
+         <VBox.margin>
+            <Insets bottom="10" />
+         </VBox.margin>
+         <Circle radius="40" style="-fx-fill: #1DB954;" />
+         <Label style="-fx-text-fill: #121212; -fx-font-size: 48px; -fx-font-weight: bold;" text="✓" />
+      </StackPane>
+
+      <!-- Título -->
+      <Label style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" text="Correo enviado">
+         <VBox.margin>
+            <Insets bottom="5" />
+         </VBox.margin>
+      </Label>
+
+      <!-- Mensaje de confirmación parte 1 -->
+      <Label fx:id="confirmationMessage1" alignment="CENTER" maxWidth="450" style="-fx-text-fill: #B3B3B3; -fx-font-size: 14px;" text="Se enviará una contraseña al usuario registrado bajo el nombre de:" wrapText="true">
+         <VBox.margin>
+            <Insets bottom="5" />
+         </VBox.margin>
+      </Label>
+
+      <!-- Nombre de usuario destacado -->
+      <Label fx:id="usernameLabel" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" text="USUARIO">
+         <VBox.margin>
+            <Insets bottom="5" />
+         </VBox.margin>
+      </Label>
+
+      <!-- Mensaje de confirmación parte 2 -->
+      <Label alignment="CENTER" maxWidth="450" style="-fx-text-fill: #B3B3B3; -fx-font-size: 14px;" text="Revisa tu correo electrónico para obtener las instrucciones de recuperación de contraseña." wrapText="true">
+         <VBox.margin>
+            <Insets bottom="30" />
+         </VBox.margin>
+      </Label>
+
+      <!-- Botón para volver al inicio de sesión -->
+      <Button fx:id="backToLoginButton" maxWidth="480" onAction="#handleBackToLogin" prefHeight="48" prefWidth="480" style="-fx-background-color: #1DB954;                        -fx-text-fill: #121212;                        -fx-font-size: 16px;                        -fx-font-weight: bold;                        -fx-background-radius: 24;                        -fx-cursor: hand;" text="Volver al inicio de sesión">
+         <VBox.margin>
+            <Insets top="10" />
+         </VBox.margin>
+      </Button>
+
+   </VBox>
+
+</StackPane>
