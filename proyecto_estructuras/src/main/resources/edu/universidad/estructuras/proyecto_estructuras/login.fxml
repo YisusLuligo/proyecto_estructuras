@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/17"
+      fx:controller="edu.universidad.estructuras.proyecto_estructuras.controller.LoginController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-background-color: #121212;"
+      prefWidth="600"
+      prefHeight="700">
+
+   <padding>
+      <Insets top="40" right="40" bottom="40" left="40"/>
+   </padding>
+
+   <!-- Logo / Ícono -->
+   <StackPane>
+      <Circle radius="40" style="-fx-fill: #1DB954;"/>
+      <Label text="♪♪" style="-fx-text-fill: #121212; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+   </StackPane>
+
+   <VBox.margin>
+      <Insets bottom="10"/>
+   </VBox.margin>
+
+   <!-- Título -->
+   <Label text="Iniciar sesión"
+          style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;">
+      <VBox.margin>
+         <Insets bottom="5"/>
+      </VBox.margin>
+   </Label>
+
+   <!-- Subtítulo -->
+   <Label text="Ingresa tus credenciales para acceder a tu cuenta"
+          style="-fx-text-fill: #B3B3B3; -fx-font-size: 14px;">
+      <VBox.margin>
+         <Insets bottom="20"/>
+      </VBox.margin>
+   </Label>
+
+   <!-- Campo de correo electrónico -->
+   <VBox spacing="8" maxWidth="480">
+      <Label text="Correo electrónico o nombre de usuario"
+             style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+      <TextField fx:id="emailField"
+                 promptText="Correo electrónico o nombre de usuario"
+                 style="-fx-background-color: #282828;
+                          -fx-text-fill: white;
+                          -fx-prompt-text-fill: #727272;
+                          -fx-background-radius: 4;
+                          -fx-border-radius: 4;
+                          -fx-padding: 14;
+                          -fx-font-size: 14px;
+                          -fx-border-color: transparent;"/>
+   </VBox>
+
+   <!-- Campo de contraseña -->
+   <VBox spacing="8" maxWidth="480">
+      <Label text="Contraseña"
+             style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+      <StackPane>
+         <PasswordField fx:id="passwordField"
+                        promptText="Contraseña"
+                        style="-fx-background-color: #282828;
+                                 -fx-text-fill: white;
+                                 -fx-prompt-text-fill: #727272;
+                                 -fx-background-radius: 4;
+                                 -fx-border-radius: 4;
+                                 -fx-padding: 14;
+                                 -fx-font-size: 14px;
+                                 -fx-border-color: transparent;"/>
+
+         <!-- Botón para mostrar/ocultar contraseña -->
+         <Button fx:id="togglePasswordButton"
+                 text="👁"
+                 style="-fx-background-color: transparent;
+                           -fx-text-fill: #B3B3B3;
+                           -fx-font-size: 16px;
+                           -fx-cursor: hand;"
+                 StackPane.alignment="CENTER_RIGHT">
+            <StackPane.margin>
+               <Insets right="10"/>
+            </StackPane.margin>
+         </Button>
+      </StackPane>
+   </VBox>
+
+   <!-- Link de olvidaste contraseña -->
+   <Hyperlink text="¿Olvidaste tu contraseña?"
+              style="-fx-text-fill: #1DB954;
+                      -fx-font-size: 14px;
+                      -fx-underline: true;"
+              fx:id="forgotPasswordLink"
+                  onAction="#handleForgot">
+      <VBox.margin>
+         <Insets top="-10"/>
+      </VBox.margin>
+   </Hyperlink>
+
+   <!-- Botón de iniciar sesión -->
+   <Button fx:id="loginButton"
+           text="Iniciar sesión"
+           maxWidth="480"
+           prefHeight="48"
+           style="-fx-background-color: #1DB954;
+                   -fx-text-fill: #121212;
+                   -fx-font-size: 16px;
+                   -fx-font-weight: bold;
+                   -fx-background-radius: 24;
+                   -fx-cursor: hand;"
+           onAction="#handleLogin">
+      <VBox.margin>
+         <Insets top="10"/>
+      </VBox.margin>
+   </Button>
+
+   <!-- Separador y registro -->
+   <HBox alignment="CENTER" spacing="5">
+      <VBox.margin>
+         <Insets top="20"/>
+      </VBox.margin>
+
+      <Label text="¿No tienes una cuenta?"
+             style="-fx-text-fill: #B3B3B3; -fx-font-size: 14px;"/>
+
+      <Hyperlink text="Regístrate"
+                 style="-fx-text-fill: #1DB954;
+                          -fx-font-size: 14px;
+                          -fx-underline: true;"
+                 fx:id="registerLink"
+                 onAction="#handleRegister"/>
+   </HBox>
+
+</VBox>

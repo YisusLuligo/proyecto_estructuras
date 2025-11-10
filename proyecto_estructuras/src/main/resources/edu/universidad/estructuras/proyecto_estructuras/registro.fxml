@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.control.ScrollPane?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/17"
+            fx:controller="edu.universidad.estructuras.proyecto_estructuras.controller.RegistroController"
+            style="-fx-background: #121212; -fx-background-color: #121212;"
+            fitToWidth="true"
+            hbarPolicy="NEVER">
+
+   <VBox alignment="TOP_CENTER"
+         spacing="20"
+         style="-fx-background-color: #121212;"
+         prefWidth="600"
+         minHeight="750">
+
+      <padding>
+         <Insets top="30" right="40" bottom="40" left="40"/>
+      </padding>
+
+      <!-- Botón de regreso -->
+      <HBox alignment="TOP_LEFT" VBox.vgrow="NEVER">
+         <VBox.margin>
+            <Insets bottom="10"/>
+         </VBox.margin>
+         <Button fx:id="backButton"
+                 text="←"
+                 style="-fx-background-color: transparent;
+                           -fx-text-fill: white;
+                           -fx-font-size: 24px;
+                           -fx-cursor: hand;"
+                 onAction="#handleBack">
+            <padding>
+               <Insets top="5" right="15" bottom="5" left="15"/>
+            </padding>
+         </Button>
+      </HBox>
+
+      <!-- Logo / Ícono musical -->
+      <StackPane>
+         <VBox.margin>
+            <Insets bottom="10"/>
+         </VBox.margin>
+         <Circle radius="35" style="-fx-fill: #1DB954;"/>
+         <Label text="♪♪" style="-fx-text-fill: #121212; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+      </StackPane>
+
+      <!-- Título -->
+      <Label text="Crear cuenta"
+             style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;">
+         <VBox.margin>
+            <Insets bottom="5"/>
+         </VBox.margin>
+      </Label>
+
+      <!-- Subtítulo -->
+      <Label text="Completa los datos para crear tu nueva cuenta"
+             style="-fx-text-fill: #B3B3B3; -fx-font-size: 14px;">
+         <VBox.margin>
+            <Insets bottom="15"/>
+         </VBox.margin>
+      </Label>
+
+      <!-- Campo de nombre completo -->
+      <VBox spacing="8" maxWidth="480">
+         <Label text="Nombre completo"
+                style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+         <TextField fx:id="fullNameField"
+                    promptText="Ingresa tu nombre completo"
+                    style="-fx-background-color: #282828;
+                              -fx-text-fill: white;
+                              -fx-prompt-text-fill: #727272;
+                              -fx-background-radius: 4;
+                              -fx-border-radius: 4;
+                              -fx-padding: 14;
+                              -fx-font-size: 14px;
+                              -fx-border-color: transparent;"
+                    prefWidth="480"/>
+      </VBox>
+
+      <!-- Campo de correo electrónico -->
+      <VBox spacing="8" maxWidth="480">
+         <Label text="Correo electrónico"
+                style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+         <TextField fx:id="emailField"
+                    promptText="Ingresa tu correo electrónico"
+                    style="-fx-background-color: #282828;
+                              -fx-text-fill: white;
+                              -fx-prompt-text-fill: #727272;
+                              -fx-background-radius: 4;
+                              -fx-border-radius: 4;
+                              -fx-padding: 14;
+                              -fx-font-size: 14px;
+                              -fx-border-color: transparent;"
+                    prefWidth="480"/>
+      </VBox>
+
+      <!-- Campo de nombre de usuario -->
+      <VBox spacing="8" maxWidth="480">
+         <Label text="Nombre de usuario"
+                style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+         <TextField fx:id="usernameField"
+                    promptText="Elige un nombre de usuario"
+                    style="-fx-background-color: #282828;
+                              -fx-text-fill: white;
+                              -fx-prompt-text-fill: #727272;
+                              -fx-background-radius: 4;
+                              -fx-border-radius: 4;
+                              -fx-padding: 14;
+                              -fx-font-size: 14px;
+                              -fx-border-color: transparent;"
+                    prefWidth="480"/>
+      </VBox>
+
+      <!-- Campo de contraseña -->
+      <VBox spacing="8" maxWidth="480">
+         <Label text="Contraseña"
+                style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+         <StackPane>
+            <PasswordField fx:id="passwordField"
+                           promptText="Crea una contraseña"
+                           style="-fx-background-color: #282828;
+                                     -fx-text-fill: white;
+                                     -fx-prompt-text-fill: #727272;
+                                     -fx-background-radius: 4;
+                                     -fx-border-radius: 4;
+                                     -fx-padding: 14;
+                                     -fx-font-size: 14px;
+                                     -fx-border-color: transparent;"
+                           prefWidth="480"/>
+
+            <!-- Botón para mostrar/ocultar contraseña -->
+            <Button fx:id="togglePasswordButton"
+                    text="👁"
+                    style="-fx-background-color: transparent;
+                               -fx-text-fill: #B3B3B3;
+                               -fx-font-size: 16px;
+                               -fx-cursor: hand;"
+                    StackPane.alignment="CENTER_RIGHT"
+                    onAction="#handleTogglePassword">
+               <StackPane.margin>
+                  <Insets right="10"/>
+               </StackPane.margin>
+            </Button>
+         </StackPane>
+      </VBox>
+
+      <!-- Campo de confirmar contraseña -->
+      <VBox spacing="8" maxWidth="480">
+         <Label text="Confirmar contraseña"
+                style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+         <StackPane>
+            <PasswordField fx:id="confirmPasswordField"
+                           promptText="Confirma tu contraseña"
+                           style="-fx-background-color: #282828;
+                                     -fx-text-fill: white;
+                                     -fx-prompt-text-fill: #727272;
+                                     -fx-background-radius: 4;
+                                     -fx-border-radius: 4;
+                                     -fx-padding: 14;
+                                     -fx-font-size: 14px;
+                                     -fx-border-color: transparent;"
+                           prefWidth="480"/>
+
+            <!-- Botón para mostrar/ocultar contraseña de confirmación -->
+            <Button fx:id="toggleConfirmPasswordButton"
+                    text="👁"
+                    style="-fx-background-color: transparent;
+                               -fx-text-fill: #B3B3B3;
+                               -fx-font-size: 16px;
+                               -fx-cursor: hand;"
+                    StackPane.alignment="CENTER_RIGHT"
+                    onAction="#handleToggleConfirmPassword">
+               <StackPane.margin>
+                  <Insets right="10"/>
+               </StackPane.margin>
+            </Button>
+         </StackPane>
+      </VBox>
+
+      <!-- Botón de crear cuenta -->
+      <Button fx:id="createAccountButton"
+              text="Crear cuenta"
+              maxWidth="480"
+              prefWidth="480"
+              prefHeight="48"
+              style="-fx-background-color: #1DB954;
+                       -fx-text-fill: #121212;
+                       -fx-font-size: 16px;
+                       -fx-font-weight: bold;
+                       -fx-background-radius: 24;
+                       -fx-cursor: hand;"
+              onAction="#handleCreateAccount">
+         <VBox.margin>
+            <Insets top="15"/>
+         </VBox.margin>
+      </Button>
+
+      <!-- Link para iniciar sesión -->
+      <HBox alignment="CENTER" spacing="5">
+         <VBox.margin>
+            <Insets top="15"/>
+         </VBox.margin>
+
+         <Label text="¿Ya tienes una cuenta?"
+                style="-fx-text-fill: #B3B3B3; -fx-font-size: 14px;"/>
+
+         <Hyperlink text="Iniciar sesión"
+                    style="-fx-text-fill: #1DB954;
+                              -fx-font-size: 14px;
+                              -fx-underline: true;"
+                    fx:id="loginLink"
+                    onAction="#handleGoToLogin"/>
+      </HBox>
+
+   </VBox>
+
+</ScrollPane>

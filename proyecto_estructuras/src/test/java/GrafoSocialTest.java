@@ -1,0 +1,2 @@
+public class GrafoSocialTest {
+}
