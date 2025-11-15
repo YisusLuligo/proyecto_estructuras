@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.universidad.estructuras.proyecto_estructura.controller.MainController"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- Barra Superior -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%); -fx-padding: 15;">
+
+            <Label text="🎵 SyncUp" style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label fx:id="lblBienvenida" text="Bienvenido" style="-fx-text-fill: white; -fx-font-size: 14;"/>
+            <Label fx:id="lblTipoUsuario" text="[Usuario]" style="-fx-text-fill: #e0e0e0; -fx-font-size: 12;"/>
+
+            <Button fx:id="btnCerrarSesion" text="Cerrar Sesión" onAction="#handleCerrarSesion"
+                    style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;"/>
+        </HBox>
+    </top>
+
+    <!-- Panel Central -->
+    <center>
+        <VBox alignment="CENTER" spacing="30" style="-fx-padding: 50;">
+
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="Sistema SyncUp - Fase 1" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                <Label text="Estructura Base Implementada" style="-fx-font-size: 16; -fx-text-fill: #666;"/>
+            </VBox>
+
+            <!-- Panel de Información del Usuario -->
+            <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+                <Label text="Información del Usuario" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+
+                <Separator/>
+
+                <HBox spacing="10">
+                    <Label text="Usuario:" style="-fx-font-weight: bold; -fx-pref-width: 120;"/>
+                    <Label fx:id="lblUsername" text="-" style="-fx-text-fill: #333;"/>
+                </HBox>
+
+                <HBox spacing="10">
+                    <Label text="Nombre:" style="-fx-font-weight: bold; -fx-pref-width: 120;"/>
+                    <Label fx:id="lblNombre" text="-" style="-fx-text-fill: #333;"/>
+                </HBox>
+
+                <HBox spacing="10">
+                    <Label text="Favoritos:" style="-fx-font-weight: bold; -fx-pref-width: 120;"/>
+                    <Label fx:id="lblCantidadFavoritos" text="0" style="-fx-text-fill: #333;"/>
+                </HBox>
+
+                <HBox spacing="10">
+                    <Label text="Tipo de cuenta:" style="-fx-font-weight: bold; -fx-pref-width: 120;"/>
+                    <Label fx:id="lblTipoCuenta" text="-" style="-fx-text-fill: #333;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Panel de Estadísticas del Sistema -->
+            <HBox spacing="20" alignment="CENTER">
+                <VBox alignment="CENTER" spacing="10"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200;">
+                    <Label text="Usuarios" style="-fx-font-size: 14; -fx-text-fill: #666;"/>
+                    <Label fx:id="lblTotalUsuarios" text="0" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="10"
+                      style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-pref-width: 200;">
+                    <Label text="Canciones" style="-fx-font-size: 14; -fx-text-fill: #666;"/>
+                    <Label fx:id="lblTotalCanciones" text="0" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: #764ba2;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Botón de prueba -->
+            <Button fx:id="btnProbarFavoritos" text="Agregar Canción de Prueba a Favoritos"
+                    onAction="#handleAgregarCancionPrueba"
+                    style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-pref-height: 40; -fx-background-radius: 5; -fx-font-size: 14; -fx-cursor: hand;"/>
+
+        </VBox>
+    </center>
+
+    <!-- Pie de página -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #333;">
+            <Label text="SyncUp © 2024 - Proyecto Final Estructura de Datos"
+                   style="-fx-text-fill: white; -fx-font-size: 11;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
