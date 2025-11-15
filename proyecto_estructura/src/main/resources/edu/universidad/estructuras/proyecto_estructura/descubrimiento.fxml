@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.universidad.estructuras.proyecto_estructura.controller.DescubrimientoController"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- Barra Superior -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%); -fx-padding: 15;">
+
+            <Button fx:id="btnVolver" text="← Volver" onAction="#handleVolver"
+                    style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label text="🎧 Descubrir Música" style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Button fx:id="btnRefrescar" text="🔄" onAction="#handleRefrescar"
+                    style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand; -fx-font-size: 18;"/>
+        </HBox>
+    </top>
+
+    <!-- Panel Central con ScrollPane -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: #f5f5f5; -fx-background-color: #f5f5f5;">
+            <VBox spacing="25" style="-fx-padding: 20;">
+
+                <!-- Top 10 Más Populares -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="🔥 Top 10 Más Populares" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Más favoritas por usuarios" style="-fx-font-size: 12; -fx-text-fill: #999;"/>
+                    </HBox>
+
+                    <Separator/>
+
+                    <ListView fx:id="listTopPopulares" style="-fx-pref-height: 300;"/>
+
+                    <HBox spacing="10" alignment="CENTER">
+                        <Button fx:id="btnVerMasPopulares" text="Ver Todas →" onAction="#handleVerMasPopulares"
+                                style="-fx-background-color: transparent; -fx-text-fill: #667eea; -fx-cursor: hand; -fx-underline: true;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Lanzamientos Recientes -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="🆕 Lanzamientos Recientes" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <ComboBox fx:id="comboPeriodo" promptText="Últimos 5 años"
+                                  onAction="#handleCambioPeriodo"
+                                  style="-fx-pref-width: 150;"/>
+                    </HBox>
+
+                    <Separator/>
+
+                    <GridPane fx:id="gridRecientes" hgap="15" vgap="15" style="-fx-padding: 10;">
+                        <!-- Se llenará dinámicamente con cards de canciones -->
+                    </GridPane>
+                </VBox>
+
+                <!-- Explorar por Género -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                    
+                    <Label text="🎭 Explorar por Género" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                    <Separator/>
+
+                    <FlowPane fx:id="flowGeneros" hgap="15" vgap="15" style="-fx-padding: 10;">
+                        <!-- Botones de género se crearán dinámicamente -->
+                    </FlowPane>
+
+                    <!-- Panel de canciones del género seleccionado -->
+                    <VBox fx:id="panelGeneroSeleccionado" spacing="10" visible="false" managed="false">
+                        <Separator/>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label fx:id="lblGeneroActual" text="Rock" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="lblCantidadGenero" text="0 canciones" style="-fx-font-size: 12; -fx-text-fill: #999;"/>
+                        </HBox>
+
+                        <TableView fx:id="tableGenero" style="-fx-pref-height: 250;">
+                            <columns>
+                                <TableColumn fx:id="colGeneroTitulo" text="Título" prefWidth="250"/>
+                                <TableColumn fx:id="colGeneroArtista" text="Artista" prefWidth="200"/>
+                                <TableColumn fx:id="colGeneroAnio" text="Año" prefWidth="80"/>
+                                <TableColumn fx:id="colGeneroDuracion" text="Duración" prefWidth="100"/>
+                                <TableColumn fx:id="colGeneroAcciones" text="Acciones" prefWidth="150"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </VBox>
+
+                <!-- Canciones por Década -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                    
+                    <Label text="📅 Viaje en el Tiempo" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                    <Separator/>
+
+                    <HBox spacing="15" alignment="CENTER">
+                        <Button fx:id="btn1960s" text="60s" onAction="#handleDecada"
+                                style="-fx-background-color: #FF6B6B; -fx-text-fill: white; -fx-pref-width: 80; -fx-pref-height: 80; -fx-background-radius: 40; -fx-cursor: hand; -fx-font-size: 16; -fx-font-weight: bold;"/>
+                        <Button fx:id="btn1970s" text="70s" onAction="#handleDecada"
+                                style="-fx-background-color: #4ECDC4; -fx-text-fill: white; -fx-pref-width: 80; -fx-pref-height: 80; -fx-background-radius: 40; -fx-cursor: hand; -fx-font-size: 16; -fx-font-weight: bold;"/>
+                        <Button fx:id="btn1980s" text="80s" onAction="#handleDecada"
+                                style="-fx-background-color: #45B7D1; -fx-text-fill: white; -fx-pref-width: 80; -fx-pref-height: 80; -fx-background-radius: 40; -fx-cursor: hand; -fx-font-size: 16; -fx-font-weight: bold;"/>
+                        <Button fx:id="btn1990s" text="90s" onAction="#handleDecada"
+                                style="-fx-background-color: #96CEB4; -fx-text-fill: white; -fx-pref-width: 80; -fx-pref-height: 80; -fx-background-radius: 40; -fx-cursor: hand; -fx-font-size: 16; -fx-font-weight: bold;"/>
+                        <Button fx:id="btn2000s" text="00s" onAction="#handleDecada"
+                                style="-fx-background-color: #FFEAA7; -fx-text-fill: #333; -fx-pref-width: 80; -fx-pref-height: 80; -fx-background-radius: 40; -fx-cursor: hand; -fx-font-size: 16; -fx-font-weight: bold;"/>
+                        <Button fx:id="btn2010s" text="10s" onAction="#handleDecada"
+                                style="-fx-background-color: #DFE6E9; -fx-text-fill: #333; -fx-pref-width: 80; -fx-pref-height: 80; -fx-background-radius: 40; -fx-cursor: hand; -fx-font-size: 16; -fx-font-weight: bold;"/>
+                        <Button fx:id="btn2020s" text="20s" onAction="#handleDecada"
+                                style="-fx-background-color: #74B9FF; -fx-text-fill: white; -fx-pref-width: 80; -fx-pref-height: 80; -fx-background-radius: 40; -fx-cursor: hand; -fx-font-size: 16; -fx-font-weight: bold;"/>
+                    </HBox>
+
+                    <!-- Panel de canciones de la década seleccionada -->
+                    <VBox fx:id="panelDecada" spacing="10" visible="false" managed="false">
+                        <Separator/>
+                        
+                        <Label fx:id="lblDecadaActual" text="Década de 1980" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+
+                        <ListView fx:id="listDecada" style="-fx-pref-height: 200;"/>
+                    </VBox>
+                </VBox>
+
+                <!-- Recomendaciones Aleatorias -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="🎲 Suerte Musical" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnSorprendeme" text="🎲 Sorpréndeme" onAction="#handleSorprendeme"
+                                style="-fx-background-color: #9C27B0; -fx-text-fill: white; -fx-pref-height: 35; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                    </HBox>
+
+                    <Separator/>
+
+                    <VBox fx:id="panelAleatorio" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+                        <Label text="Haz click en 'Sorpréndeme' para descubrir música al azar" 
+                               style="-fx-text-fill: #999; -fx-font-size: 14;"/>
+                    </VBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

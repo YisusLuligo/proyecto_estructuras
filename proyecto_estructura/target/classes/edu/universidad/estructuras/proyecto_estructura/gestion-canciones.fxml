@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.universidad.estructuras.proyecto_estructura.controller.GestionCancionesController"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- Barra Superior -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%); -fx-padding: 15;">
+
+            <Button fx:id="btnVolver" text="← Volver" onAction="#handleVolver"
+                    style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label text="🎵 Gestión de Canciones" style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label fx:id="lblTotalCanciones" text="Total: 0" style="-fx-text-fill: white; -fx-font-size: 14;"/>
+        </HBox>
+    </top>
+
+    <!-- Panel Central -->
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+
+            <!-- Barra de Herramientas -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button fx:id="btnAgregar" text="➕ Nueva Canción" onAction="#handleAgregar"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-pref-height: 35; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                <Button fx:id="btnCargarMasivo" text="📁 Carga Masiva" onAction="#handleCargarMasivo"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-pref-height: 35; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                <Button fx:id="btnRefrescar" text="🔄 Refrescar" onAction="#handleRefrescar"
+                        style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-pref-height: 35; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <!-- Búsqueda -->
+                <TextField fx:id="txtBuscar" promptText="Buscar por título o artista..." style="-fx-pref-width: 250; -fx-pref-height: 35;"/>
+                <Button fx:id="btnBuscar" text="🔍" onAction="#handleBuscar"
+                        style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-pref-height: 35; -fx-background-radius: 5; -fx-cursor: hand;"/>
+            </HBox>
+
+            <!-- Tabla de Canciones -->
+            <TableView fx:id="tableCanciones" style="-fx-background-color: white; -fx-background-radius: 5;" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="80" style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="colTitulo" text="Título" prefWidth="250"/>
+                    <TableColumn fx:id="colArtista" text="Artista" prefWidth="200"/>
+                    <TableColumn fx:id="colGenero" text="Género" prefWidth="120"/>
+                    <TableColumn fx:id="colAnio" text="Año" prefWidth="80" style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="colDuracion" text="Duración" prefWidth="100" style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="220" style="-fx-alignment: CENTER;"/>
+                </columns>
+            </TableView>
+
+            <!-- Botones de Acción -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="btnEditar" text="✏️ Editar" onAction="#handleEditar"
+                        style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-pref-height: 35; -fx-pref-width: 120; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                <Button fx:id="btnEliminar" text="🗑️ Eliminar" onAction="#handleEliminar"
+                        style="-fx-background-color: #F44336; -fx-text-fill: white; -fx-pref-height: 35; -fx-pref-width: 120; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                <Button fx:id="btnYoutube" text="▶️ Ver en YouTube" onAction="#handleVerYoutube"
+                        style="-fx-background-color: #FF0000; -fx-text-fill: white; -fx-pref-height: 35; -fx-pref-width: 150; -fx-background-radius: 5; -fx-cursor: hand;"/>
+            </HBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>
