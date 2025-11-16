@@ -1,0 +1,15 @@
+# Base de Datos de Canciones - SyncUp
+# Formato: ID|Título|Artista|Género|Año|Duración|URL_YouTube
+# La duración está en formato decimal: 3.45 = 3 minutos 45 segundos
+
+C0014|Uptown Funk|Mark Ronson|Funk|2014|4,30|https://www.youtube.com/watch?v=OPf0YbXqDm0
+C0015|Rolling in the Deep|Adele|Pop|2010|3,48|https://www.youtube.com/watch?v=rYEDA3JcQqw
+C0012|Blinding Lights|The Weeknd|Pop|2019|3,20|https://www.youtube.com/watch?v=4NRXx6U8ABQ
+C0013|Despacito|Luis Fonsi|Reggaeton|2017|3,47|https://www.youtube.com/watch?v=kJQP7kiw5Fk
+C0021|MLP|Yeison Jimenez|Popular|2023|3,50|https://www.youtube.com/watch?v=eJdHWu-Czhg
+C0011|Shape of You|Ed Sheeran|Pop|2017|3,53|https://www.youtube.com/watch?v=JGwWNGJdvx8
+C0020|Seven Nation Army|The White Stripes|Rock|2003|3,51|https://www.youtube.com/watch?v=0J2QdDbelmY
+C0018|Numb|Linkin Park|Rock|2003|3,07|https://www.youtube.com/watch?v=kXYiU_JCYtU
+C0019|In the End|Linkin Park|Rock|2000|3,36|https://www.youtube.com/watch?v=eVTXPUF4Oz4
+C0016|Lose Yourself|Eminem|Hip Hop|2002|5,26|https://www.youtube.com/watch?v=_Yhyp-_hX2s
+C0017|Thunderstruck|AC/DC|Rock|1990|4,52|https://www.youtube.com/watch?v=v2AC41dglnM

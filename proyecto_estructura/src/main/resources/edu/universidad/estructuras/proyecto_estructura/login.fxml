@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="edu.universidad.estructuras.proyecto_estructura.controller.LoginController"
+      alignment="CENTER"
+      spacing="20"
+      style="-fx-background-color: #121212;"
+      prefWidth="600"
+      prefHeight="700">
+
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
+    <!-- Logo / Ícono -->
+    <StackPane>
+        <Circle radius="40" style="-fx-fill: #1DB954;"/>
+        <Label text="🎵" style="-fx-text-fill: #121212; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+    </StackPane>
+
+    <VBox.margin>
+        <Insets bottom="10"/>
+    </VBox.margin>
+
+    <!-- Título -->
+    <Label text="SyncUp"
+           style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;">
+        <VBox.margin>
+            <Insets bottom="5"/>
+        </VBox.margin>
+    </Label>
+
+    <!-- Subtítulo -->
+    <Label text="Motor de Recomendaciones Musicales"
+           style="-fx-text-fill: #B3B3B3; -fx-font-size: 14px;">
+        <VBox.margin>
+            <Insets bottom="20"/>
+        </VBox.margin>
+    </Label>
+
+    <!-- Campo de Usuario -->
+    <VBox spacing="8" maxWidth="480">
+        <Label text="Usuario"
+               style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+        <TextField fx:id="txtUsername"
+                   promptText="Ingrese su usuario"
+                   style="-fx-background-color: #282828;
+                          -fx-text-fill: white;
+                          -fx-prompt-text-fill: #727272;
+                          -fx-background-radius: 4;
+                          -fx-border-radius: 4;
+                          -fx-padding: 14;
+                          -fx-font-size: 14px;
+                          -fx-border-color: transparent;"/>
+    </VBox>
+
+    <!-- Campo de Contraseña -->
+    <VBox spacing="8" maxWidth="480">
+        <Label text="Contraseña"
+               style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+        <PasswordField fx:id="txtPassword"
+                       promptText="Ingrese su contraseña"
+                       style="-fx-background-color: #282828;
+                              -fx-text-fill: white;
+                              -fx-prompt-text-fill: #727272;
+                              -fx-background-radius: 4;
+                              -fx-border-radius: 4;
+                              -fx-padding: 14;
+                              -fx-font-size: 14px;
+                              -fx-border-color: transparent;"/>
+    </VBox>
+
+    <!-- Label de error -->
+    <Label fx:id="lblError"
+           style="-fx-text-fill: #e74c3c; -fx-font-size: 12px; -fx-font-weight: bold;"
+           wrapText="true"
+           visible="false"
+           maxWidth="480"/>
+
+    <!-- Botón de iniciar sesión -->
+    <Button fx:id="btnLogin"
+            text="Iniciar Sesión"
+            onAction="#handleLogin"
+            maxWidth="480"
+            prefHeight="48"
+            style="-fx-background-color: #1DB954;
+                   -fx-text-fill: #121212;
+                   -fx-font-size: 16px;
+                   -fx-font-weight: bold;
+                   -fx-background-radius: 24;
+                   -fx-cursor: hand;">
+        <VBox.margin>
+            <Insets top="10"/>
+        </VBox.margin>
+    </Button>
+
+    <!-- Separador y registro -->
+    <HBox alignment="CENTER" spacing="5">
+        <VBox.margin>
+            <Insets top="20"/>
+        </VBox.margin>
+
+        <Label text="¿No tienes una cuenta?"
+               style="-fx-text-fill: #B3B3B3; -fx-font-size: 14px;"/>
+
+        <Button fx:id="btnRegistro"
+                text="Regístrate"
+                onAction="#handleRegistro"
+                style="-fx-background-color: transparent;
+                       -fx-text-fill: #1DB954;
+                       -fx-font-size: 14px;
+                       -fx-underline: true;
+                       -fx-cursor: hand;
+                       -fx-border-color: transparent;"/>
+    </HBox>
+
+    <!-- Información de prueba -->
+    <Separator style="-fx-background-color: #282828;" maxWidth="480">
+        <VBox.margin>
+            <Insets top="20"/>
+        </VBox.margin>
+    </Separator>
+
+    <VBox spacing="5" alignment="CENTER">
+        <Label text="Usuarios de prueba:"
+               style="-fx-font-size: 11px; -fx-text-fill: #727272;"/>
+        <Label text="Admin: admin / admin123"
+               style="-fx-font-size: 10px; -fx-text-fill: #B3B3B3;"/>
+        <Label text="Usuario: user1 / pass123"
+               style="-fx-font-size: 10px; -fx-text-fill: #B3B3B3;"/>
+    </VBox>
+
+</VBox>
