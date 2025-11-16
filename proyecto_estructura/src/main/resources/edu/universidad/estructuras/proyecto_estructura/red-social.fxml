@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.universidad.estructuras.proyecto_estructura.controller.RedSocialController"
+            style="-fx-background-color: #f5f5f5;">
+
+    <!-- Barra Superior -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%); -fx-padding: 15;">
+
+            <Button fx:id="btnVolver" text="← Volver" onAction="#handleVolver"
+                    style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label text="👥 Red Social" style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </top>
+
+    <!-- Panel Central -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: #f5f5f5; -fx-background-color: #f5f5f5;">
+            <VBox spacing="20" style="-fx-padding: 20;">
+
+                <!-- Estadísticas Sociales -->
+                <HBox spacing="20" alignment="CENTER">
+                    <VBox alignment="CENTER" spacing="10"
+                          style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30; -fx-pref-width: 250; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                        <Label text="👤" style="-fx-font-size: 40;"/>
+                        <Label text="Siguiendo" style="-fx-font-size: 14; -fx-text-fill: #666;"/>
+                        <Label fx:id="lblMisSeguidos" text="0" style="-fx-font-size: 42; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+                    </VBox>
+
+                    <VBox alignment="CENTER" spacing="10"
+                          style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30; -fx-pref-width: 250; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+                        <Label text="👥" style="-fx-font-size: 40;"/>
+                        <Label text="Seguidores" style="-fx-font-size: 14; -fx-text-fill: #666;"/>
+                        <Label fx:id="lblMisSeguidores" text="0" style="-fx-font-size: 42; -fx-font-weight: bold; -fx-text-fill: #764ba2;"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Buscar Usuarios -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+                    <Label text="🔍 Buscar Usuarios" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+                    <Separator/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="txtBuscarUsuario" promptText="Buscar por nombre o username..."
+                                   style="-fx-pref-width: 400; -fx-pref-height: 40; -fx-font-size: 14;"
+                                   HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnBuscar" text="🔍 Buscar" onAction="#handleBuscar"
+                                style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-pref-height: 40; -fx-pref-width: 120; -fx-background-radius: 5; -fx-cursor: hand; -fx-font-size: 14;"/>
+
+                    </HBox>
+
+                    <!-- Panel de Resultados de Búsqueda -->
+                    <VBox fx:id="panelBusqueda" spacing="10" visible="false" managed="false">
+                        <Separator/>
+
+                        <Label text="Resultados de Búsqueda" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+
+                        <TableView fx:id="tableBusqueda" style="-fx-pref-height: 250;">
+                            <columns>
+                                <TableColumn fx:id="colBusquedaUsername" text="Username" prefWidth="200"/>
+                                <TableColumn fx:id="colBusquedaNombre" text="Nombre" prefWidth="250"/>
+                                <TableColumn fx:id="colBusquedaTipo" text="Tipo" prefWidth="150"/>
+                                <TableColumn fx:id="colBusquedaAcciones" text="Acciones" prefWidth="200"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </VBox>
+
+                <!-- Usuarios que Sigo -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="✅ Usuarios que Sigo" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Gestiona tus conexiones" style="-fx-font-size: 12; -fx-text-fill: #999;"/>
+                    </HBox>
+
+                    <Separator/>
+
+                    <TableView fx:id="tableSeguidos" style="-fx-pref-height: 300;">
+                        <columns>
+                            <TableColumn fx:id="colSeguidosUsername" text="Username" prefWidth="200"/>
+                            <TableColumn fx:id="colSeguidosNombre" text="Nombre" prefWidth="250"/>
+                            <TableColumn fx:id="colSeguidosFavoritos" text="Favoritos" prefWidth="120" style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colSeguidosAcciones" text="Acciones" prefWidth="200"/>
+                        </columns>
+                    </TableView>
+
+                    <Label text="💡 Puedes dejar de seguir a usuarios desde la tabla"
+                           style="-fx-font-size: 11; -fx-text-fill: #999; -fx-font-style: italic;"/>
+                </VBox>
+
+                <!-- Sugerencias de Usuarios (BFS - Amigos de Amigos) -->
+                <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label text="💡 Sugerencias de Usuarios" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Basado en amigos de amigos (BFS)" style="-fx-font-size: 12; -fx-text-fill: #667eea; -fx-font-weight: bold;"/>
+                    </HBox>
+
+                    <Separator/>
+
+                    <TableView fx:id="tableSugerencias" style="-fx-pref-height: 300;">
+                        <columns>
+                            <TableColumn fx:id="colSugerenciasUsername" text="Username" prefWidth="200"/>
+                            <TableColumn fx:id="colSugerenciasNombre" text="Nombre" prefWidth="250"/>
+                            <TableColumn fx:id="colSugerenciasFavoritos" text="Favoritos" prefWidth="120" style="-fx-alignment: CENTER;"/>
+                            <TableColumn fx:id="colSugerenciasAcciones" text="Acciones" prefWidth="200"/>
+                        </columns>
+                    </TableView>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="🔍" style="-fx-font-size: 16;"/>
+                        <Label text="Estas sugerencias se generan usando el algoritmo BFS (Breadth-First Search) para encontrar 'amigos de amigos' a 2-3 grados de separación"
+                               wrapText="true" style="-fx-font-size: 11; -fx-text-fill: #666; -fx-font-style: italic;"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>
