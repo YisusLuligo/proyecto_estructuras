@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.universidad.estructuras.proyecto_estructura.controller.DescubrimientoSemanalController"
+            style="-fx-background-color: #191414;">
+
+    <!-- Barra Superior -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20"
+              style="-fx-background-color: #000000; -fx-padding: 20;">
+
+            <Button fx:id="btnVolver" text="← Volver" onAction="#handleVolver"
+                    style="-fx-background-color: transparent; -fx-text-fill: #B3B3B3; -fx-border-color: #535353; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 20; -fx-cursor: hand; -fx-font-size: 13; -fx-padding: 8 20 8 20;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label text="Descubrimiento Semanal" style="-fx-text-fill: white; -fx-font-size: 28; -fx-font-weight: bold;"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </top>
+
+    <!-- Panel Central -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: #191414; -fx-background-color: #191414;">
+            <VBox spacing="20" style="-fx-padding: 30;">
+
+                <!-- Descripción -->
+                <VBox spacing="15" style="-fx-background-color: #282828; -fx-background-radius: 8; -fx-padding: 30;">
+
+                    <Label text="✨ Tu Playlist Personalizada" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #1DB954;"/>
+
+                    <Separator style="-fx-background-color: #535353;"/>
+
+                    <Label text="Descubre nueva música basada en tus gustos personales. Nuestro algoritmo analiza tus canciones favoritas y usa el Grafo de Similitud con Dijkstra para encontrar las mejores recomendaciones para ti."
+                           wrapText="true" style="-fx-font-size: 14; -fx-text-fill: #B3B3B3; -fx-line-spacing: 5px;"/>
+
+                    <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-padding: 10 0 0 0;">
+                        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 15; -fx-background-color: #1DB954; -fx-background-radius: 8;">
+                            <Label text="🎯" style="-fx-font-size: 24;"/>
+                            <Label text="Algoritmo Inteligente" style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #000000;"/>
+                            <Label text="Usa Dijkstra" style="-fx-font-size: 10; -fx-text-fill: #000000;"/>
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 15; -fx-background-color: #535353; -fx-background-radius: 8;">
+                            <Label text="🎼" style="-fx-font-size: 24;"/>
+                            <Label text="Basado en Favoritos" style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;"/>
+                            <Label text="Tus gustos" style="-fx-font-size: 10; -fx-text-fill: #B3B3B3;"/>
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="5" style="-fx-padding: 15; -fx-background-color: #535353; -fx-background-radius: 8;">
+                            <Label text="🔄" style="-fx-font-size: 24;"/>
+                            <Label text="Actualización Semanal" style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;"/>
+                            <Label text="Siempre fresco" style="-fx-font-size: 10; -fx-text-fill: #B3B3B3;"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Configuración -->
+                <VBox spacing="15" style="-fx-background-color: #282828; -fx-background-radius: 8; -fx-padding: 30;">
+
+                    <Label text="⚙️ Configuración" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;"/>
+
+                    <Separator style="-fx-background-color: #535353;"/>
+
+                    <VBox spacing="10">
+                        <HBox alignment="CENTER_LEFT" spacing="15">
+                            <Label text="Cantidad de recomendaciones:" style="-fx-font-size: 14; -fx-text-fill: #B3B3B3;"/>
+                            <Label fx:id="lblCantidadSlider" text="20"
+                                   style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #1DB954;"/>
+                        </HBox>
+
+                        <Slider fx:id="sliderCantidad" min="10" max="50" value="20"
+                                showTickLabels="true" showTickMarks="true" majorTickUnit="10"
+                                style="-fx-pref-width: 500;"/>
+                    </VBox>
+
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Button fx:id="btnGenerar" text="Generar Descubrimiento" onAction="#handleGenerar"
+                                style="-fx-background-color: #1DB954; -fx-text-fill: #000000; -fx-pref-height: 48; -fx-pref-width: 250; -fx-background-radius: 24; -fx-cursor: hand; -fx-font-size: 14; -fx-font-weight: bold;"/>
+
+                        <ProgressIndicator fx:id="progressIndicator" visible="false"
+                                           style="-fx-pref-width: 50; -fx-pref-height: 50; -fx-progress-color: #1DB954;"/>
+
+                        <Label text="Analizando tus gustos musicales..." fx:id="lblGenerando" visible="false"
+                               style="-fx-text-fill: #1DB954; -fx-font-size: 12;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Panel de Recomendaciones -->
+                <VBox fx:id="panelRecomendaciones" spacing="15"
+                      style="-fx-background-color: #282828; -fx-background-radius: 8; -fx-padding: 30;"
+                      visible="false" managed="false">
+
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <VBox spacing="5">
+                            <Label text="📋 Tus Recomendaciones" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;"/>
+                            <Label fx:id="lblCantidadRecomendaciones" text="0 recomendaciones"
+                                   style="-fx-font-size: 14; -fx-text-fill: #1DB954; -fx-font-weight: bold;"/>
+                            <Label fx:id="lblBasadoEn" text="Basado en tus favoritos"
+                                   style="-fx-font-size: 12; -fx-text-fill: #B3B3B3;"/>
+                        </VBox>
+
+                        <Region HBox.hgrow="ALWAYS"/>
+
+                        <VBox spacing="10" alignment="CENTER_RIGHT">
+                            <Button fx:id="btnGuardarPlaylist" text="💾 Guardar como Playlist" onAction="#handleGuardarPlaylist"
+                                    style="-fx-background-color: transparent; -fx-text-fill: #1DB954; -fx-border-color: #1DB954; -fx-border-width: 2; -fx-pref-height: 40; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand; -fx-font-weight: bold;"/>
+                            <HBox spacing="10">
+                                <Button fx:id="btnReproducirTodo" text="▶ Reproducir" onAction="#handleReproducirTodo"
+                                        style="-fx-background-color: #1DB954; -fx-text-fill: #000000; -fx-pref-height: 40; -fx-background-radius: 20; -fx-cursor: hand; -fx-font-weight: bold; -fx-padding: 0 20 0 20;"/>
+                                <Button fx:id="btnAgregarTodasFavoritos" text="❤ Agregar Todas" onAction="#handleAgregarTodasFavoritos"
+                                        style="-fx-background-color: transparent; -fx-text-fill: #B3B3B3; -fx-border-color: #535353; -fx-border-width: 1; -fx-pref-height: 40; -fx-background-radius: 20; -fx-border-radius: 20; -fx-cursor: hand;"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+
+                    <Separator style="-fx-background-color: #535353;"/>
+
+                    <TableView fx:id="tableRecomendaciones" style="-fx-pref-height: 450; -fx-background-color: #121212; -fx-control-inner-background: #121212; -fx-table-cell-border-color: #282828;">
+                        <columns>
+                            <TableColumn fx:id="colNumero" text="#" prefWidth="50"/>
+                            <TableColumn fx:id="colTitulo" text="Título" prefWidth="250"/>
+                            <TableColumn fx:id="colArtista" text="Artista" prefWidth="200"/>
+                            <TableColumn fx:id="colGenero" text="Género" prefWidth="120"/>
+                            <TableColumn fx:id="colAnio" text="Año" prefWidth="80"/>
+                            <TableColumn fx:id="colDuracion" text="Duración" prefWidth="100"/>
+                            <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 15; -fx-background-color: #121212; -fx-background-radius: 5;">
+                        <Label text="💡" style="-fx-font-size: 16;"/>
+                        <Label text="Estas recomendaciones se generan usando el algoritmo de Dijkstra en el Grafo de Similitud. Cada canción se selecciona por su similitud con tus favoritos."
+                               wrapText="true" style="-fx-font-size: 11; -fx-text-fill: #B3B3B3; -fx-font-style: italic;"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>
